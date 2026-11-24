@@ -22,6 +22,8 @@ jobs:
           node-version: 20
       - name: Instalar dependencias
         run: npm install
+      - name: Generar iconos
+        run: node scripts/make-icons.js
       - name: Preparar la web
         shell: bash
         run: mkdir -p www && cp index.html www/index.html
@@ -58,11 +60,14 @@ jobs:
           java-version: 17
       - name: Instalar dependencias
         run: npm install
+      - name: Generar iconos
+        run: node scripts/make-icons.js
       - name: Preparar la web
         run: mkdir -p www && cp index.html www/index.html
       - name: Crear proyecto Android
         run: |
           npx cap add android
+          npx --yes @capacitor/assets@3 generate --android
           npx cap sync android
       - name: Compilar APK
         working-directory: android
