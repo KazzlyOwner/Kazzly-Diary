@@ -1,0 +1,28 @@
+{
+  "name": "kazzly-diary",
+  "version": "1.0.0",
+  "description": "Kazzly Diary - notas, misiones y rachas",
+  "author": { "name": "Kazzly", "email": "kazzly@example.com" },
+  "homepage": "https://github.com/",
+  "main": "main.js",
+  "scripts": { "start": "electron ." },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.kazzly.diary",
+    "productName": "Kazzly Diary",
+    "files": ["main.js", "www/**/*"],
+    "directories": { "output": "dist" },
+    "win": { "target": ["nsis", "portable"] },
+    "nsis": { "artifactName": "Kazzly-Diary-Setup-${version}.${ext}" },
+    "portable": { "artifactName": "Kazzly-Diary-Portable-${version}.${ext}" },
+    "mac": { "target": ["dmg"], "identity": null, "category": "public.app-category.productivity" },
+    "dmg": { "artifactName": "Kazzly-Diary-${version}-mac-${arch}.${ext}" },
+    "linux": { "target": ["AppImage", "deb"], "category": "Office", "artifactName": "Kazzly-Diary-${version}-linux-${arch}.${ext}" }
+  }
+}
